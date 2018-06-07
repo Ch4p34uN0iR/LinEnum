@@ -5,14 +5,15 @@ Note: Export functionality is currently in the experimental stage.
 
 General usage:
 
-version 0.6
+version 0.9
 
-* Example: ./LinEnum.sh -k keyword -r report -e /tmp/ -t 
+* Example: ./LinEnum.sh -s -k keyword -r report -e /tmp/ -t 
 
 OPTIONS:
 * -k	Enter keyword
 * -e	Enter export location
 * -t	Include thorough (lengthy) tests
+* -s	Supply current user password to check sudo perms (INSECURE)
 * -r	Enter report name
 * -h	Displays this help text
 
@@ -22,6 +23,7 @@ Running with no options = limited scans/no output file
 * -e Requires the user enters an output location i.e. /tmp/export. If this location does not exist, it will be created.
 * -r Requires the user to enter a report name. The report (.txt file) will be saved to the current working directory.
 * -t Performs thorough (slow) tests. Without this switch default 'quick' scans are performed.
+* -s Use the current user with supplied password to check for sudo permissions - note this is insecure and only really for CTF use!
 * -k An optional switch for which the user can search for a single keyword within many files (documented below).
 
 See CHANGELOG.md for further details
@@ -49,6 +51,7 @@ High-level summary of the checks/tasks performed by LinEnum:
   * List current users history files (i.e .bash_history, .nano_history etc.)
   * Basic SSH checks
 * Privileged access:
+  * Which users have recently used sudo
   * Determine if /etc/sudoers is accessible
   * Determine if the current user has Sudo access without a password
   * Are known ‘good’ breakout binaries available via Sudo (i.e. nmap, vim etc.)
@@ -74,6 +77,8 @@ High-level summary of the checks/tasks performed by LinEnum:
   * Apache
     * Checks user config
     * Shows enabled modules
+    * Checks for htpasswd files
+    * View www directories
 * Default/Weak Credentials:
   * Checks for default/weak Postgres accounts
   * Checks for default/weak MYSQL accounts

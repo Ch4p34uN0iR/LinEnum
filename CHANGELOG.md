@@ -2,6 +2,39 @@
 
 Note: Export functionality is currently in the experimental stage.
 
+## V0.9 (release 25-05-2018)
+Additions
+* Sudo/suid/guid binary list expanded to include entries from https://gtfobins.github.io/
+* -s switch introduced. This allows you to supply the current user password for authenticated sudo 'checks'. Note; this is INSECURE and is really only for use in CTF environments
+
+Modifications
+* Sudo/suid/guid searches modified & bug in sudo parsing (when multiple entries are separated by commas) fixed
+* Apache home dir output moved to thorough checks (due to extensive output)
+
+## V0.8 (release 12-04-2018)
+Additions
+* Prints contents of users .bash_history (if found)
+* Looks for users that have used sudo
+* Checks for htpasswd files
+* Lists hidden files
+* Further checks/output in regards to viewing files the user owns
+* Additional checks using newer ip commands
+* Added PHP search for keywords
+
+Modifications
+* Code/commands cleaned
+* Added [+] and [-] to output, to aid in searching through the generated report
+
+## V0.7 (22-01-2018)
+Additions
+* LX Container checks
+* Loaded Kernel Modules list
+* adm group listing
+* SELinux Presence
+
+Modifications
+* Code optimization: everything is in functions, cat grep awk pair optimized.
+
 ## V0.6 (release 12-05-2017)
 Additions
 * ARP information added
